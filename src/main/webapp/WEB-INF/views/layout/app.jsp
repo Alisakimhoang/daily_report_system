@@ -13,7 +13,7 @@
     <div id="wrapper">
         <div id="header">
             <div id="header_menu">
-                <h1>Daily report management system (報管理システム)</h1>
+                <h1>報管理システム</h1>
             </div>
         </div>
         <div id="content">${param.content}</div>
