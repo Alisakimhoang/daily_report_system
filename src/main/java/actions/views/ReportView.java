@@ -41,6 +41,9 @@ public class ReportView {
     /**
      * 日報の内容
      */
+    private int likeCount;
+
+
     private String content;
 
     /**
@@ -52,4 +55,6 @@ public class ReportView {
      * 更新日時
      */
     private LocalDateTime updatedAt;
+
+
 }

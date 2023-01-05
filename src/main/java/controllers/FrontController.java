@@ -31,7 +31,6 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         //パラメータに該当するActionクラスのインスタンス
         ActionBase action = getAction(request, response);
 
@@ -40,6 +39,7 @@ public class FrontController extends HttpServlet {
 
         //Actionクラスの処理を呼び出し
         action.process();
+
     }
 
 
@@ -68,12 +68,15 @@ public class FrontController extends HttpServlet {
             String actionString = request.getParameter(ForwardConst.ACT.getValue());
 
             //該当するActionオブジェクトを作成 (例:リクエストからパラメータ action=Employee の場合、actions.EmployeeActionオブジェクト)
-            type = Class.forName(String.format("actions.%sAction", actionString));
+            String className = String.format("actions.%sAction", actionString); // actions.ReportAction
+
+            type = Class.forName(className);
 
             //ActionBaseのオブジェクトにキャスト(例:actions.EmployeeActionオブジェクト→actions.ActionBaseオブジェクト)
             action = (ActionBase) (type.asSubclass(ActionBase.class)
                     .getDeclaredConstructor()
                     .newInstance());
+            // action = new ReportAction()
 
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SecurityException
                 | IllegalArgumentException | InvocationTargetException| NoSuchMethodException e) {

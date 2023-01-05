@@ -24,7 +24,7 @@ public class AuthAction extends ActionBase {
      */
     @Override
     public void process() throws ServletException, IOException {
-
+System.out.println("In process() of AuthAction Class");
         service = new EmployeeService();
 
         //メソッドを実行

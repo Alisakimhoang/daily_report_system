@@ -6,6 +6,7 @@
 <c:set var="actRep" value="${ForwardConst.ACT_REP.getValue()}" />
 <c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 <c:set var="commEdt" value="${ForwardConst.CMD_EDIT.getValue()}" />
+<c:set var="commLikeCount" value="${ForwardConst.CMD_LIKE_COUNT.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -37,6 +38,11 @@
                     <fmt:parseDate value="${report.updatedAt}" pattern="yyyy-MM-dd'T'HH:mm:ss" var="updateDay" type="date" />
                     <td><fmt:formatDate value="${updateDay}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                 </tr>
+
+                <tr>
+                <th>いいね！</th>
+                <td><pre><c:out value="  ${report.likeCount}"   /> </pre></td>
+                 </tr>
             </tbody>
         </table>
 
@@ -46,6 +52,12 @@
             </p>
         </c:if>
 
+<form method="POST" action="<c:url value='/?action=${actRep}&command=${commLikeCount}&id=${report.id}' />">
+<p>
+   <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
+     <a href="<c:url value='/?action=${actRep}&command=${commLikeCount}&id=${report.id}' />">この日報にいいねする</a>
+ </p>
+</form>
         <p>
             <a href="<c:url value='?action=${actRep}&command=${commIdx}' />">一覧に戻る</a>
         </p>

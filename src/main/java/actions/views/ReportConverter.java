@@ -22,6 +22,7 @@ public class ReportConverter {
                 EmployeeConverter.toModel(rv.getEmployee()),
                 rv.getReportDate(),
                 rv.getTitle(),
+                rv.getLikeCount(),
                 rv.getContent(),
                 rv.getCreatedAt(),
                 rv.getUpdatedAt());
@@ -43,6 +44,7 @@ public class ReportConverter {
                 EmployeeConverter.toView(r.getEmployee()),
                 r.getReportDate(),
                 r.getTitle(),
+                r.getLikeCount(),
                 r.getContent(),
                 r.getCreatedAt(),
                 r.getUpdatedAt());
@@ -76,6 +78,7 @@ public class ReportConverter {
         r.setContent(rv.getContent());
         r.setCreatedAt(rv.getCreatedAt());
         r.setUpdatedAt(rv.getUpdatedAt());
+        r.setLikeCount(rv.getLikeCount());
 
     }
 
